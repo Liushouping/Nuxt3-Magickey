@@ -12,18 +12,22 @@ export default {
 		const { b, a } = useMagicKeys();
 
 		const throttledAction = useThrottleFn(() => {
-	      sound.play();
-	      showModal.value = true;
-	    }, 2000);
+	    showModal.value = true;
+	    sound.play();
+	  }, 2000);
 
 		watch([a], ([isAA]) => {
 		  if (isAA) {
-		  	 A.value =! A.value;
+		  	A.value = false
+		  } else {
+		  	A.value = true
 		  }
 		})
 		watch([b], ([isBB]) => {
 		  if (isBB) {
-		  	 B.value =! B.value;
+		  	B.value = false
+		  } else {
+		  	B.value = true
 		  }
 		})
 		watch([a, b], ([isA, isB]) => {
