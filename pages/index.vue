@@ -12,7 +12,10 @@ export default {
 		const { b, a } = useMagicKeys();
 
 		const throttledAction = useThrottleFn(() => {
-	    showModal.value = true;
+			showModal.value = true;
+	    setTimeout(() => {
+	      showModal.value = false;
+	    }, 3000);
 	    sound.play();
 	  }, 2000);
 
@@ -50,28 +53,25 @@ export default {
 			<div class="flex flex-row pt-4 space-x-4">
 				<span 
 				:class="{ 'bg-gray-50': A,'bg-green-200 text-green-50': !A }"
-				class="text-gray-400 rounded-[2px] px-4 py-2" >A</span>
+				class="text-gray-300 rounded-[2px] px-4 py-2" >A</span>
 				<span 
 				:class="{ 'bg-gray-50': B,'bg-green-200 text-green-50': !B }"
-				class="text-gray-400 rounded-[2px] px-4 py-2">B</span>
+				class="text-gray-300 rounded-[2px] px-4 py-2">B</span>
 			</div>
 		</div>
 	</div>
 
 	<teleport to="body">
-      <div 
-      v-if="showModal" 
-      class="fixed w-full h-screen bg-gray-900/30 flex justify-center items-center z-50">
-      	<div class="w-[320px] h-[320px] rounded-[10px] p-4 flex justify-center items-center bg-white relative">
-      		<div @click="showModal = false;A = true,B = true;" class="absolute top-4 right-4 hover:bg-gray-100 rounded-[2px]">
-      			<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 fill-gray-900">
-						  <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-						</svg>
-      		</div>
-      		<p class="tracking-[5px] text-[72px]">Oh!No...</p>
-      	</div>
-      </div>
-    </teleport>
+		<Transition name="slide-fade">
+    <div 
+    v-if="showModal" 
+    class="fixed w-full h-screen bg-gray-900/30 flex justify-center items-center z-50">
+    
+    	<NuxtIndex />
+    
+    </div>
+    </Transition>
+  </teleport>
 </template>
 
 <style>
@@ -79,5 +79,18 @@ export default {
 
   body,html {
   	font-family: 'Anton', sans-serif;
-  }
+  };
+  .slide-fade-enter-active {
+	  transition: all 0.3s ease-out;
+	}
+
+	.slide-fade-leave-active {
+	  transition: all 0.8s cubic-bezier(1, 0.5, 0.8, 1);
+	}
+
+	.slide-fade-enter-from,
+	.slide-fade-leave-to {
+	  transform: translateX(-2000px);
+	  opacity: 0;
+	}
 </style>
