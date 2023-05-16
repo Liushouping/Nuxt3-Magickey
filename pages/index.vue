@@ -59,19 +59,17 @@ export default {
 				class="text-gray-300 rounded-[2px] px-4 py-2">B</span>
 			</div>
 		</div>
-	</div>
 
-	<teleport to="body">
-		<Transition name="slide-fade">
-    <div 
-    v-if="showModal" 
-    class="fixed w-full h-screen bg-gray-900/30 flex justify-center items-center z-50">
-    
-    	<NuxtIndex />
-    
-    </div>
-    </Transition>
-  </teleport>
+		<teleport to="body">
+			<Transition name="slide-fade">
+	    <div 
+	    v-if="showModal" 
+	    class="fixed w-full h-screen bg-gray-900/30 flex justify-center items-center z-50">
+	    	<NuxtIndex />
+	    </div>
+	    </Transition>
+	  </teleport>
+	</div>
 </template>
 
 <style>
@@ -80,6 +78,7 @@ export default {
   body,html {
   	font-family: 'Anton', sans-serif;
   };
+
   .slide-fade-enter-active {
 	  transition: all 0.3s ease-out;
 	}
