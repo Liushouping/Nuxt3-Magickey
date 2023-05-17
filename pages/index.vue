@@ -15,7 +15,7 @@ export default {
 			showModal.value = true;
 	    setTimeout(() => {
 	      showModal.value = false;
-	    }, 3000);
+	    }, 5000);
 	    sound.play();
 	  }, 2000);
 
