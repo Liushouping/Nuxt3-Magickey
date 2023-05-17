@@ -49,7 +49,7 @@ export default {
 <template>
 	<div class="w-full h-screen bg-gray-900 flex justify-center items-center">
 		<div class="flex flex-col">
-			<h1 class="text-white tracking-[1px]">Please press A + B, there will be a surprise for you.</h1>
+			<h1 class="text-white tracking-[2px] capitalize">Please press A + B, there will be a surprise for you.</h1>
 			<div class="flex flex-row pt-4 space-x-4">
 				<span 
 				:class="{ 'bg-gray-50': A,'bg-green-200 text-green-50': !A }"
