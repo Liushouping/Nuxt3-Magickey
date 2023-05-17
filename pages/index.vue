@@ -11,6 +11,9 @@ export default {
     const sound = new Howl({
 		  src: ['/audio/sound.mp3']
 		});
+		const key = new Howl({
+		  src: ['/audio/key.mp3']
+		});
 		const { a, b, c } = useMagicKeys();
 
 		const throttledAction = useThrottleFn(() => {
@@ -23,33 +26,35 @@ export default {
 
 		watch([a], ([isAA]) => {
 		  if (isAA) {
-		  	A.value = false
+		  	key.play();
+		  	A.value = false;
 		  } else {
-		  	A.value = true
+		  	key.play();
+		  	A.value = true;
 		  }
 		})
 		watch([b], ([isBB]) => {
 		  if (isBB) {
-		  	B.value = false
+		  	key.play();
+		  	B.value = false;
 		  } else {
-		  	B.value = true
+		  	key.play();
+		  	B.value = true;
 		  }
 		})
 		watch([c], ([isCC]) => {
 		  if (isCC) {
-		  	C.value = false
+		  	key.play();
+		  	C.value = false;
 		  } else {
+		  	key.play();;
 		  	C.value = true
 		  }
 		})
 		watch([a, b], ([isA, isB]) => {
 		  if (isA && isB) {
-		  	 throttledAction();
-		  }
-		})
-		watch([c], ([isC]) => {
-		  if (isC) {
-		  	 message.value = "Surprise oh No C,Surprise oh No C,Surprise oh No C"
+		  	sound.play();
+		  	throttledAction();
 		  }
 		})
 
@@ -66,11 +71,12 @@ export default {
 }
 </script>
 <template>
+	<div>
 	<div class="w-full h-screen bg-gray-900 flex justify-center items-center">
 		<div class="flex flex-col">
 			<h1 
 			ref="text"
-			class="text-yellow-300 tracking-[2px] capitalize">{{ message }}</h1>
+			class="text-[24px] text-yellow-300 tracking-[1px] capitalize">{{ message }}</h1>
 			<div class="flex flex-row pt-4 space-x-4">
 				<span 
 				:class="{ 'bg-gray-50': A,'bg-green-200 text-green-400 border-green-400': !A }"
@@ -99,6 +105,7 @@ export default {
 	    </div>
 	    </Transition>
 	  </teleport>
+	</div>
 	</div>
 </template>
 
