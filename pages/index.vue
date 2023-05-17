@@ -53,15 +53,18 @@ export default {
 			<div class="flex flex-row pt-4 space-x-4">
 				<span 
 				:class="{ 'bg-gray-50': A,'bg-green-200 text-green-50': !A }"
-				class="text-gray-300 rounded-[2px] px-4 py-2" >A</span>
+				class="text-gray-300 rounded-[2px] px-4 py-2 border-2 border-gray-200" >A</span>
+				<span class="flex justify-center items-center text-[24px] text-white">+</span>
 				<span 
 				:class="{ 'bg-gray-50': B,'bg-green-200 text-green-50': !B }"
-				class="text-gray-300 rounded-[2px] px-4 py-2">B</span>
+				class="text-gray-300 rounded-[2px] px-4 py-2 border-2 border-gray-200">B</span>
 			</div>
 		</div>
 
 		<teleport to="body">
-			<Transition name="slide-fade">
+			<Transition 
+			enter-active-class="animate__animated animate__tada"
+    	leave-active-class="animate__animated animate__bounceOutRight">
 	    <div 
 	    v-if="showModal" 
 	    class="fixed w-full h-screen bg-gray-900/30 flex justify-center items-center z-50">
@@ -74,7 +77,7 @@ export default {
 
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
-
+  @import "https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css";
   body,html {
   	font-family: 'Anton', sans-serif;
   };

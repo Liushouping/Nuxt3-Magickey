@@ -1,5 +1,5 @@
 <template>
-	<div class="relative h-full flex justify-center items-center z-50">
+	<div class="relative w-full h-screen flex justify-center items-center z-50 bg-gray-800">
 		<div class="absolute flex flex-col space-y-2">
 			<div 
 			v-for="i in 6"
