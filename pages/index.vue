@@ -39,7 +39,12 @@ export default {
 		  }
 		})
 
-
+		useHead({
+		  title: '彩蛋式網站｜按鍵 A + B',
+		  meta: [
+		    { name: 'description', content: '彩蛋式網站｜按鍵 A + B' }
+		  ],
+		})
     return {
       showModal,A,B
     }
