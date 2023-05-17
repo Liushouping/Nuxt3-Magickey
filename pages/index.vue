@@ -49,15 +49,15 @@ export default {
 <template>
 	<div class="w-full h-screen bg-gray-900 flex justify-center items-center">
 		<div class="flex flex-col">
-			<h1 class="text-white tracking-[2px] capitalize">Please press A + B, there will be a surprise for you.</h1>
+			<h1 class="text-yellow-300 tracking-[2px] capitalize">Please press A + B, there will be a surprise for you.</h1>
 			<div class="flex flex-row pt-4 space-x-4">
 				<span 
-				:class="{ 'bg-gray-50': A,'bg-green-200 text-green-50': !A }"
-				class="text-gray-300 rounded-[2px] px-4 py-2 border-2 border-gray-200" >A</span>
+				:class="{ 'bg-gray-50': A,'bg-green-200 text-green-400 border-green-400': !A }"
+				class="text-[18px] text-gray-300 rounded-[2px] px-4 py-2 border-2 border-gray-200" >A</span>
 				<span class="flex justify-center items-center text-[24px] text-white">+</span>
 				<span 
-				:class="{ 'bg-gray-50': B,'bg-green-200 text-green-50': !B }"
-				class="text-gray-300 rounded-[2px] px-4 py-2 border-2 border-gray-200">B</span>
+				:class="{ 'bg-gray-50': B,'bg-green-200 text-green-400 border-green-400': !B }"
+				class="ttext-[18px] text-gray-300 rounded-[2px] px-4 py-2 border-2 border-gray-200">B</span>
 			</div>
 		</div>
 
