@@ -7,6 +7,8 @@ export default {
     const A = ref(true);
     const B = ref(true);
     const C = ref(true);
+    const D = ref(true);
+    const E = ref(true);
     const message = ref("Please press A + B, there will be a surprise for you.")
     const sound = new Howl({
 		  src: ['/audio/sound.mp3']
@@ -14,7 +16,7 @@ export default {
 		const key = new Howl({
 		  src: ['/audio/key.mp3']
 		});
-		const { a, b, c } = useMagicKeys();
+		const { a, b, c, d, e } = useMagicKeys();
 
 		const throttledAction = useThrottleFn(() => {
 			showModal.value = true;
@@ -51,6 +53,24 @@ export default {
 		  	C.value = true
 		  }
 		})
+		watch([d], ([isDD]) => {
+		  if (isDD) {
+		  	key.play();
+		  	D.value = false;
+		  } else {
+		  	key.play();;
+		  	D.value = true
+		  }
+		})
+		watch([e], ([isEE]) => {
+		  if (isEE) {
+		  	key.play();
+		  	E.value = false;
+		  } else {
+		  	key.play();;
+		  	E.value = true
+		  }
+		})
 		watch([a, b], ([isA, isB]) => {
 		  if (isA && isB) {
 		  	sound.play();
@@ -59,24 +79,24 @@ export default {
 		})
 
 		useHead({
-		  title: '彩蛋式網站｜按鍵彈出',
+		  title: '一頁式網站｜按鍵彈出彩蛋',
 		  meta: [
-		    { name: 'description', content: '彩蛋式網站｜按鍵彈出' }
+		    { name: 'description', content: '一頁式網站｜按鍵彈出彩蛋' }
 		  ],
 		})
     return {
-      showModal,A,B,C,message
+      showModal,A,B,C,D,E,message
     }
   }
 }
 </script>
 <template>
-	<div>
-	<div class="w-full h-screen bg-gray-900 flex justify-center items-center">
+	<div class="bg-yellow-400 p-10 w-full h-screen">
+
+	<div class="w-full h-full bg-gray-900 rounded-[5px] flex justify-center items-center">
+			
 		<div class="flex flex-col">
-			<h1 
-			ref="text"
-			class="text-[14px] sm:text-[24px] text-yellow-300 tracking-[1px] capitalize">{{ message }}</h1>
+			<h1 class="text-[14px] sm:text-[24px] text-yellow-300 tracking-[1px] capitalize">{{ message }}</h1>
 			<div class="flex flex-row pt-4 space-x-4">
 				<span 
 				:class="{ 'bg-gray-50': A,'bg-green-200 text-green-400 border-green-400': !A }"
@@ -91,22 +111,30 @@ export default {
 				<span 
 				:class="{ 'bg-gray-50': C,'bg-green-200 text-green-400 border-green-400': !C }"
 				class="text-[18px] text-gray-300 rounded-[2px] px-2 sm:px-4 py-1 sm:py-2 border-2 border-gray-200" >C</span>
+				<span 
+				:class="{ 'bg-gray-50': D,'bg-green-200 text-green-400 border-green-400': !D }"
+				class="text-[18px] text-gray-300 rounded-[2px] px-2 sm:px-4 py-1 sm:py-2 border-2 border-gray-200" >D</span>
+				<span 
+				:class="{ 'bg-gray-50': E,'bg-green-200 text-green-400 border-green-400': !E }"
+				class="text-[18px] text-gray-300 rounded-[2px] px-2 sm:px-4 py-1 sm:py-2 border-2 border-gray-200" >E</span>
 			</div>
 		</div>
 
-		<teleport to="body">
-			<Transition 
-			enter-active-class="animate__animated animate__tada"
-    	leave-active-class="animate__animated animate__bounceOutRight">
+	</div>
+
+	</div>
+
+	<teleport to="body">
+		<Transition 
+		enter-active-class="animate__animated animate__tada"
+    leave-active-class="animate__animated animate__bounceOutRight">
 	    <div 
 	    v-if="showModal" 
 	    class="fixed w-full h-screen bg-gray-900/30 flex justify-center items-center z-50">
 	    	<NuxtIndex />
 	    </div>
-	    </Transition>
-	  </teleport>
-	</div>
-	</div>
+	  </Transition>
+	</teleport>
 </template>
 
 <style>
