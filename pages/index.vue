@@ -4,6 +4,7 @@ import { Howl } from 'howler';
 export default {
   setup() {
     const showModal = ref(false);
+    const showError = ref(false);
     const A = ref(true);
     const B = ref(true);
     const C = ref(true);
@@ -24,6 +25,14 @@ export default {
 	      showModal.value = false;
 	    }, 3500);
 	    sound.play();
+	  }, 2000);
+
+	  const throttledActionError = useThrottleFn(() => {
+			showError.value = true;
+	    setTimeout(() => {
+	      showError.value = false;
+	    }, 3500);
+	    key.play();
 	  }, 2000);
 
 		watch([a], ([isAA]) => {
@@ -64,7 +73,7 @@ export default {
 		})
 		watch([e], ([isEE]) => {
 		  if (isEE) {
-		  	key.play();
+		  	throttledActionError();
 		  	E.value = false;
 		  } else {
 		  	key.play();;
@@ -85,7 +94,7 @@ export default {
 		  ],
 		})
     return {
-      showModal,A,B,C,D,E,message
+      showModal,showError,A,B,C,D,E,message
     }
   }
 }
@@ -123,18 +132,31 @@ export default {
 	</div>
 
 	</div>
-
+	<!-- Show Modal -->
 	<teleport to="body">
 		<Transition 
 		enter-active-class="animate__animated animate__tada"
     leave-active-class="animate__animated animate__bounceOutRight">
 	    <div 
 	    v-if="showModal" 
-	    class="fixed w-full h-screen bg-gray-900/30 flex justify-center items-center z-50">
-	    	<NuxtIndex />
+	    class="fixed w-full h-screen flex justify-center items-center z-50">
+	    	<NuxtIndex info="On No" bg="bg-yellow-400"/>
 	    </div>
 	  </Transition>
 	</teleport>
+	<!-- Error Modal -->
+	<teleport to="body">
+		<Transition 
+		enter-active-class="animate__animated animate__tada"
+    leave-active-class="animate__animated animate__bounceOutRight">
+	    <div 
+	    v-if="showError" 
+	    class="fixed w-full h-screen flex justify-center items-center z-50">
+	    	<NuxtIndex info="Error Error" bg="bg-red-900"/>
+	    </div>
+	  </Transition>
+	</teleport>
+
 </template>
 
 <style>

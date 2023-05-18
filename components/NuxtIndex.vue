@@ -1,5 +1,13 @@
+<script>
+export default {
+  props: ['info','bg'],
+}
+</script>
+
 <template>
-	<div class="relative w-full h-screen flex justify-center items-center z-50 bg-gray-800">
+	<div 
+	class="relative w-full h-screen flex justify-center items-center z-50" 
+	:class="bg">
 		<div class="absolute flex flex-col space-y-2">
 			<div 
 			v-for="i in 6"
@@ -7,7 +15,7 @@
 			style="animation-play-state:running">
 				<div 
 				v-for="i in 24" 
-				class="w-fit px-6 text-[82px] sm:text-[210px] md:text-[180px] xl:text-[120px] 2xl:text-[168px] font-bold text-white">On No
+				class="w-fit px-6 text-[82px] sm:text-[210px] md:text-[180px] xl:text-[120px] 2xl:text-[168px] font-bold text-white">{{ info }}
 				</div>
 			</div>
 		</div>
@@ -28,7 +36,7 @@
 }
 .animate-move-left:nth-child(3) {
 	padding-left: 40px;
-	opacity: 90%;
+	opacity: 80%;
 }
 .animate-move-left:nth-child(4) {
 	padding-left: 60px;
