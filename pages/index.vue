@@ -76,21 +76,21 @@ export default {
 		<div class="flex flex-col">
 			<h1 
 			ref="text"
-			class="text-[24px] text-yellow-300 tracking-[1px] capitalize">{{ message }}</h1>
+			class="text-[14px] sm:text-[24px] text-yellow-300 tracking-[1px] capitalize">{{ message }}</h1>
 			<div class="flex flex-row pt-4 space-x-4">
 				<span 
 				:class="{ 'bg-gray-50': A,'bg-green-200 text-green-400 border-green-400': !A }"
-				class="text-[18px] text-gray-300 rounded-[2px] px-4 py-2 border-2 border-gray-200" >A</span>
+				class="text-[18px] text-gray-300 rounded-[2px] px-2 sm:px-4 py-1 sm:py-2 border-2 border-gray-200" >A</span>
 				<span class="flex justify-center items-center text-[24px] text-white">+</span>
 				<span 
 				:class="{ 'bg-gray-50': B,'bg-green-200 text-green-400 border-green-400': !B }"
-				class="ttext-[18px] text-gray-300 rounded-[2px] px-4 py-2 border-2 border-gray-200">B</span>
+				class="ttext-[18px] text-gray-300 rounded-[2px] px-2 sm:px-4 py-1 sm:py-2 border-2 border-gray-200">B</span>
 			</div>
 
 			<div class="flex flex-row pt-4 space-x-4">
 				<span 
 				:class="{ 'bg-gray-50': C,'bg-green-200 text-green-400 border-green-400': !C }"
-				class="text-[18px] text-gray-300 rounded-[2px] px-4 py-2 border-2 border-gray-200" >C</span>
+				class="text-[18px] text-gray-300 rounded-[2px] px-2 sm:px-4 py-1 sm:py-2 border-2 border-gray-200" >C</span>
 			</div>
 		</div>
 
