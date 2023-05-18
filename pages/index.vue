@@ -17,6 +17,9 @@ export default {
 		const key = new Howl({
 		  src: ['/audio/key.mp3']
 		});
+		const error = new Howl({
+		  src: ['/audio/error.mp3']
+		});
 		const { a, b, c, d, e } = useMagicKeys();
 
 		const throttledAction = useThrottleFn(() => {
@@ -32,7 +35,7 @@ export default {
 	    setTimeout(() => {
 	      showError.value = false;
 	    }, 3500);
-	    key.play();
+	    // key.play();
 	  }, 2000);
 
 		watch([a], ([isAA]) => {
@@ -73,11 +76,12 @@ export default {
 		})
 		watch([e], ([isEE]) => {
 		  if (isEE) {
+		  	error.play();
 		  	throttledActionError();
-		  	E.value = false;
+		  	// E.value = false;
 		  } else {
-		  	key.play();;
-		  	E.value = true
+		  	error.play();;
+		  	// E.value = true
 		  }
 		})
 		watch([a, b], ([isA, isB]) => {
